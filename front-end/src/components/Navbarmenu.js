@@ -7,10 +7,40 @@ import Resturents from "./Resturents";
 import Foodtrucks from "./Foodtrucks";
 import Homepage from "./Homepage";
 import SushiCentro from "./SushiCentro";
-
+import axios from "axios"
+import Foodtruckinfo from './Foodtruckinfo';
+import Onefoodtruck from './Onefoodtruck';
+import Restaurantinfo from './Restaurantinfo';
+import Onerestaurant from './Onerestaurant';
 
 
 export default class Navbarmenu extends Component {
+  state = {
+    data: [],
+    restaurantdata: [],
+  }
+  componentDidMount() {
+    axios.get('http://localhost:5300/api/foodtrucks/')
+      .then(res => {
+      
+        this.setState({ data: res.data,})
+        console.log(res);
+
+        
+      })
+      .catch(err=> console.log(err)
+      )
+      axios.get('http://localhost:5300/api/Restaurants/')
+      .then(res => {
+      
+        this.setState({ restaurantdata: res.data,})
+        console.log(res);
+
+        
+      })
+      .catch(err=> console.log(err)
+      )
+  }
     render() {
         return (
             <div>
@@ -31,9 +61,18 @@ export default class Navbarmenu extends Component {
                       </NavDropdown>
              </Navbar>
              <Switch>
+             <Route path="/Foodtruckinfo/:name" render={ (props)=> <Onefoodtruck {...props}  food={ this.state.data.length == 0?   0 : this.state.data.filter(ele =>{
+        return  props.match.params.name == ele.name            
+          }) }/>} />
+          <Route path="/Restaurantinfo/:name" render={ (props)=> <Onerestaurant {...props}  food={ this.state.data.length == 0?   0 : this.state.data.filter(ele =>{
+        return  props.match.params.name == ele.name            
+          }) }/>} />
              <Route  path="/JeddahWaterFront" component={Homepage} />
-             <Route  path="/Resturents" component={Resturents} />
-             <Route  path="/Foodtrucks" component={Foodtrucks} />
+             {/* <Route  path="/Resturents" component={Resturents} /> */}
+             <Route path="/Resturents" render={ ()=> <Restaurantinfo food={this.state.restaurantdata}/>} />
+             <Route path="/Foodtrucks" render={ ()=> <Foodtruckinfo food={this.state.data}/>} />
+
+             {/* <Route  path="/Foodtrucks" component={Foodtrucks} /> */}
              <Route  path="/SushiCentroResturent" component={SushiCentro} />
             </Switch>
          </BrowserRouter>
