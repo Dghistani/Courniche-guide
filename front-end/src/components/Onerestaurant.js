@@ -1,20 +1,22 @@
 import React, { Component } from 'react'
 import { Card } from 'react-bootstrap'
 
+
 export default class Onerestaurant extends Component {
+  
     render() {
 
-        var menu = !this.props.food ? [] : this.props.food[0]
-        console.log(menu);
+        var munu = !this.props.food ? [] : this.props.food
+        console.log(munu);
         return (
             <div>
-                {menu.map(ele => {
+                {munu.map(ele => {
 
-                    return <div className="card">
-                         
-                                <h2>Name: {ele.name}</h2>
-                            <h5>Price: {ele.price}</h5>
-                            
+                    return <div className="card"> 
+                    <img src={ele.pictures[0].picURL} width="auto" height="200"/>
+                    <h2> {ele.name}</h2>
+                    <h5> {ele.type}</h5>
+                    <p>{ele.description}</p>                           
                     </div>
 
                 })}

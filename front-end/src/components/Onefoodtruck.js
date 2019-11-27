@@ -13,7 +13,7 @@ export default class Onefoodtruck extends Component {
                     return <div className="card">
                         <Card style={{ width: '18rem' }}>
                          
-                                <h2>Name: {ele.name}</h2>
+                            <h2>Name: {ele.name}</h2>
                             <h5>Price: {ele.price}</h5>
                             <Card.Body>
                             </Card.Body>

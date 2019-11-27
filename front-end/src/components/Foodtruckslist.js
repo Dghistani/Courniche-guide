@@ -13,7 +13,8 @@ export default class Foodtruckslist extends Component {
       console.log(this.props.food);
       
         return (
-            <div>
+          <div>
+            
                 <Navbar bg="light" variant="light">
                   <Form inline>
                     <FormControl type="text" placeholder="Search" className="mr-sm-2" />
@@ -22,7 +23,7 @@ export default class Foodtruckslist extends Component {
                </Navbar>
 
                 <br/>
-
+              <div>
                <Container>
                   <Row>
                     <Col sm={4}><img src={this.props.foodImg} width="300" height="200"/></Col>
@@ -38,6 +39,9 @@ export default class Foodtruckslist extends Component {
                   
                </Container>
             </div>
+            </div>
+                      
+
         )
     }
 }

@@ -64,7 +64,7 @@ export default class Navbarmenu extends Component {
              <Route path="/Foodtruckinfo/:name" render={ (props)=> <Onefoodtruck {...props}  food={ this.state.data.length == 0?   0 : this.state.data.filter(ele =>{
         return  props.match.params.name == ele.name            
           }) }/>} />
-          <Route path="/Restaurantinfo/:name" render={ (props)=> <Onerestaurant {...props}  food={ this.state.data.length == 0?   0 : this.state.data.filter(ele =>{
+          <Route path="/Restaurantinfo/:name" render={ (props)=> <Onerestaurant {...props}  food={ this.state.restaurantdata.length == 0?   0 : this.state.restaurantdata.filter(ele =>{
         return  props.match.params.name == ele.name            
           }) }/>} />
              <Route  path="/JeddahWaterFront" component={Homepage} />

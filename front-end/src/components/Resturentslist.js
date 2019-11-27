@@ -28,7 +28,7 @@ export default class Resturentslist extends Component {
                     <Col sm={8}>
                       <h1>{this.props.foodName}</h1>
                       <h4>{this.props.foodType}</h4>
-                      <Button variant="dark"> <Link to={ "/Resturantinfo/"+this.props.foodName} >see ditals</Link></Button> <br/>
+                      <Button variant="dark"> <Link to={ "Restaurantinfo/"+this.props.foodName} >see ditals</Link></Button> <br/>
                       <br/><Button variant="dark"> Go to Location </Button>
 
                       </Col>
